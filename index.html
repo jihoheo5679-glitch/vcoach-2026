@@ -1,0 +1,427 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>발로란트 대리, 정확, 신속, 고급, 안전 100% 보장</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#090d14;color:#fff;
+ font-family:Arial,"Noto Sans KR",sans-serif;
+}
+:root{--gold:#d9b46b;--panel:#151e2b}
+nav{
+ height:80px;display:flex;justify-content:space-between;
+ align-items:center;padding:0 8%;
+ background:#0b1019;
+}
+.logo{color:var(--gold);font-weight:900;letter-spacing:3px}
+nav a{color:white;text-decoration:none;margin-left:22px}
+.hero{
+ min-height:650px;padding:150px 8%;
+ position:relative;overflow:hidden;
+ background:linear-gradient(90deg,#080c14 15%,#182638 100%);
+}
+.hero:after{
+ content:"";position:absolute;right:5%;top:60px;
+ width:350px;height:470px;
+ border:2px solid #d9b46b44;
+ transform:skew(-10deg);
+ box-shadow:0 0 80px #63758a33;
+}
+.hero small{color:var(--gold);letter-spacing:5px}
+h1{font-size:65px;line-height:1.15;position:relative;z-index:1}
+.hero p{color:#aeb9c8;line-height:1.8;position:relative;z-index:1}
+button,.btn{
+ background:var(--gold);color:#111;border:0;
+ padding:13px 22px;font-weight:bold;cursor:pointer;
+ text-decoration:none;display:inline-block;
+}
+section{padding:75px 8%;max-width:1300px;margin:auto}
+h2{font-size:34px}
+.tag{color:var(--gold);letter-spacing:4px;font-size:12px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{
+ background:var(--panel);border:1px solid #293648;
+ padding:27px;min-height:180px;
+}
+.card h3{color:var(--gold)}
+.card p{color:#aeb9c8;line-height:1.8}
+.price-table{
+ width:100%;border-collapse:collapse;margin-top:25px;
+ background:#171d28;
+}
+.price-table th,.price-table td{
+ padding:17px 13px;text-align:center;
+ border-bottom:5px solid #090d14;
+}
+.price-table th{background:#222c3b;color:var(--gold)}
+.price-table td:first-child{color:#ff4050;font-weight:bold}
+.price-table tr:hover{background:#253044}
+.price-image{
+ margin-top:35px;text-align:center;
+}
+.price-image img{max-width:100%;height:auto}
+.contact{
+ background:#101925;padding:65px 8%;
+ display:flex;justify-content:space-between;align-items:center;
+}
+footer{text-align:center;padding:25px;color:#788596}
+.admin{
+ max-width:900px;margin:45px auto;padding:25px;
+ background:#151e2b;border:1px solid #344153;
+}
+.admin input,.admin textarea{
+ width:100%;padding:12px;margin:7px 0 15px;
+ background:#080d15;border:1px solid #46556a;color:white;
+}
+.admin label{font-size:13px;color:#cbd3de}
+.admin-row{
+ display:grid;grid-template-columns:1fr 1fr 1fr;
+ gap:10px;padding:12px;margin:10px 0;
+ background:#202c3b;
+}
+.admin-row button{background:#a83c48;color:white}
+.secondary{background:#344153;color:white;margin:5px}
+#adminPanel{display:none}
+#loginPanel{max-width:420px;margin:auto}
+.status{color:var(--gold);font-size:13px}
+@media(max-width:700px){
+ .cards{grid-template-columns:1fr}
+ .hero{padding:110px 7%}
+ h1{font-size:43px}
+ .hero:after{opacity:.2;right:-150px}
+ nav{padding:0 5%}
+ nav a{margin-left:8px;font-size:12px}
+ .contact{display:block}
+ .admin-row{grid-template-columns:1fr}
+ section{padding:55px 6%}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+ <div class="logo" id="logo">V / COACHING</div>
+ <div>
+  <a href="#lesson">대리</a>
+  <a href="#price">가격표</a>
+  <a href="#contact">문의</a>
+ </div>
+</nav>
+
+<header class="hero">
+ <small>VALORANT PERSONAL COACHING</small>
+ <h1 id="mainTitle">승률100% 레디언트 기사</h1>
+ <p id="mainDesc">
+ 하나의 패배도 없이 모두 승리합니다
+ </p>
+ <a class="btn" href="#price">대리 확인하기 ↗</a>
+</header>
+
+
+<section id="price">
+ <div class="tag">PRICE</div>
+ <h2>대리 가격표</h2>
+
+ <table class="price-table">
+  <thead>
+   <tr>
+    <th>티어</th>
+    <th>승당 가격</th>
+    <th>승급 가격</th>
+   </tr>
+  </thead>
+  <tbody id="priceBody"></tbody>
+ </table>
+
+ <div class="price-image">
+  <h3>상세 가격표 이미지</h3>
+  <img src="price.png" alt="강의 가격표 이미지">
+ </div>
+</section>
+
+<div class="contact" id="contact">
+ <div>
+  <div class="tag">CONTACT</div>
+  <h2>지금 티어를 바꿔보세요.</h2>
+  <p id="contactDesc">대리 문의는 아래 버튼을 이용해 주세요.</p>
+ </div>
+ <a class="btn" id="contactLink"
+ href="https://open.kakao.com/" target="_blank">
+ 문의하기 ↗
+ </a>
+</div>
+
+<section class="admin">
+
+ <div id="loginPanel">
+  <h2>관리자 로그인</h2>
+  <p>최초 접속 시 관리자 비밀번호를 설정하세요.</p>
+
+  <label>비밀번호</label>
+  <input id="password" type="password">
+
+  <div id="confirmArea">
+   <label>비밀번호 확인</label>
+   <input id="passwordConfirm" type="password">
+  </div>
+
+  <button onclick="login()">로그인 / 비밀번호 설정</button>
+  <p class="status" id="loginStatus"></p>
+ </div>
+
+ <div id="adminPanel">
+  <h2>관리자 페이지</h2>
+
+  <h3>메인 화면 편집</h3>
+
+  <label>로고</label>
+  <input id="editLogo">
+
+  <label>메인 제목</label>
+  <input id="editTitle">
+
+  <label>메인 설명</label>
+  <textarea id="editDesc"></textarea>
+
+  <label>문의 설명</label>
+  <input id="editContact">
+
+  <label>카카오톡 문의 링크</label>
+  <input id="editLink">
+
+  <hr>
+
+  <h3>가격표 편집</h3>
+  <div id="priceEditor"></div>
+
+  <button onclick="addPrice()">+ 가격 추가</button>
+
+  <hr>
+
+  <button onclick="saveAll()">변경사항 저장</button>
+  <button class="secondary" onclick="logout()">로그아웃</button>
+  <button class="secondary" onclick="changePassword()">비밀번호 변경</button>
+
+  <p class="status" id="saveStatus"></p>
+ </div>
+</section>
+
+<footer>
+ © VALORANT COACHING
+</footer>
+
+<script>
+
+// 기본 가격 데이터
+const defaultPrices=[
+ ["브론즈","6,000원","20,000원"],
+ ["실버","6,000원","20,000원"],
+ ["골드","8,000원","25,000원"],
+ ["플래티넘 1~2","10,000원","30,000원"],
+ ["플래티넘 3","10,000원","40,000원"],
+ ["다이아몬드 1","14,000원","45,000원"],
+ ["다이아몬드 2","15,000원","50,000원"],
+ ["다이아몬드 3","16,000원","55,000원"],
+ ["초월자 1","20,000원","65,000원"],
+ ["초월자 2","22,000원","75,000원"],
+ ["초월자 3","25,000원","85,000원"],
+ ["불멸 1","35,000원","150,000원"],
+ ["불멸 2","40,000원","150,000원"],
+ ["불멸 3","45,000원","400,000원"],
+ ["레디언트","68,000원","100점당 400,000원"]
+];
+
+let prices=JSON.parse(localStorage.getItem("coachPrices"))||defaultPrices;
+
+let settings=JSON.parse(localStorage.getItem("coachSettings"))||{
+ logo:"V / COACHING",
+ title:"한계를 넘는 플레이를 만들다.",
+ desc:"당신의 플레이를 분석하고 실전에서 통하는 습관을 만듭니다.",
+ contact:"강의 문의는 아래 버튼을 이용해 주세요.",
+ link:"https://open.kakao.com/"
+};
+
+function safe(value){
+ return String(value).replace(/[&<>"']/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",
+ '"':"&quot;","'":"&#39;"
+ }[c]));
+}
+
+function render(){
+
+ document.getElementById("logo").textContent=settings.logo;
+ document.getElementById("mainTitle").textContent=settings.title;
+ document.getElementById("mainDesc").textContent=settings.desc;
+ document.getElementById("contactDesc").textContent=settings.contact;
+ document.getElementById("contactLink").href=settings.link;
+
+ document.getElementById("priceBody").innerHTML=prices.map(p=>`
+ <tr>
+  <td>${safe(p[0])}</td>
+  <td>${safe(p[1])}</td>
+  <td>${safe(p[2])}</td>
+ </tr>
+ `).join("");
+
+ renderEditor();
+}
+
+function renderEditor(){
+
+ const editor=document.getElementById("priceEditor");
+
+ editor.innerHTML=prices.map((p,i)=>`
+ <div class="admin-row">
+  <div>
+   <label>티어</label>
+   <input value="${safe(p[0])}" onchange="editPrice(${i},0,this.value)">
+  </div>
+  <div>
+   <label>승당 가격</label>
+   <input value="${safe(p[1])}" onchange="editPrice(${i},1,this.value)">
+  </div>
+  <div>
+   <label>승급 가격</label>
+   <input value="${safe(p[2])}" onchange="editPrice(${i},2,this.value)">
+   <button onclick="deletePrice(${i})">삭제</button>
+  </div>
+ </div>
+ `).join("");
+
+}
+
+function editPrice(i,col,value){
+ prices[i][col]=value;
+}
+
+function addPrice(){
+ prices.push(["새 티어","가격 입력","가격 입력"]);
+ render();
+}
+
+function deletePrice(i){
+ if(confirm("이 가격 항목을 삭제할까요?")){
+  prices.splice(i,1);
+  render();
+ }
+}
+
+// 관리자 비밀번호
+async function hashPassword(password){
+ const buffer=await crypto.subtle.digest(
+  "SHA-256",new TextEncoder().encode(password)
+ );
+ return Array.from(new Uint8Array(buffer))
+ .map(x=>x.toString(16).padStart(2,"0")).join("");
+}
+
+function isFirst(){
+ return !localStorage.getItem("coachPassword");
+}
+
+async function login(){
+
+ const password=document.getElementById("password").value;
+ const confirm=document.getElementById("passwordConfirm").value;
+
+ if(password.length<6){
+  document.getElementById("loginStatus").textContent="6자 이상 입력하세요.";
+  return;
+ }
+
+ if(isFirst()){
+
+  if(password!==confirm){
+   document.getElementById("loginStatus").textContent="비밀번호가 일치하지 않습니다.";
+   return;
+  }
+
+  localStorage.setItem("coachPassword",await hashPassword(password));
+
+ }else{
+
+  const saved=localStorage.getItem("coachPassword");
+  if(await hashPassword(password)!==saved){
+   document.getElementById("loginStatus").textContent="비밀번호가 틀렸습니다.";
+   return;
+  }
+ }
+
+ openAdmin();
+}
+
+function openAdmin(){
+
+ document.getElementById("loginPanel").style.display="none";
+ document.getElementById("adminPanel").style.display="block";
+
+ document.getElementById("editLogo").value=settings.logo;
+ document.getElementById("editTitle").value=settings.title;
+ document.getElementById("editDesc").value=settings.desc;
+ document.getElementById("editContact").value=settings.contact;
+ document.getElementById("editLink").value=settings.link;
+
+ renderEditor();
+}
+
+function saveAll(){
+
+ settings={
+  logo:document.getElementById("editLogo").value,
+  title:document.getElementById("editTitle").value,
+  desc:document.getElementById("editDesc").value,
+  contact:document.getElementById("editContact").value,
+  link:document.getElementById("editLink").value
+ };
+
+ localStorage.setItem("coachSettings",JSON.stringify(settings));
+ localStorage.setItem("coachPrices",JSON.stringify(prices));
+
+ render();
+
+ document.getElementById("saveStatus").textContent="저장 완료!";
+}
+
+function logout(){
+ document.getElementById("adminPanel").style.display="none";
+ document.getElementById("loginPanel").style.display="block";
+ document.getElementById("password").value="";
+}
+
+async function changePassword(){
+
+ const oldPassword=prompt("현재 비밀번호");
+ if(!oldPassword)return;
+
+ if(await hashPassword(oldPassword)!==localStorage.getItem("coachPassword")){
+  alert("현재 비밀번호가 틀렸습니다.");
+  return;
+ }
+
+ const newPassword=prompt("새 비밀번호 (6자 이상)");
+ if(!newPassword||newPassword.length<6){
+  alert("6자 이상 입력하세요.");
+  return;
+ }
+
+ localStorage.setItem("coachPassword",await hashPassword(newPassword));
+ alert("비밀번호가 변경되었습니다.");
+}
+
+if(!isFirst()){
+ document.getElementById("confirmArea").style.display="none";
+ document.getElementById("loginStatus").textContent="비밀번호를 입력해 주세요.";
+}
+
+render();
+
+</script>
+</body>
+</html>
